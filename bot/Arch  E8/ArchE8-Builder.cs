@@ -7,11 +7,9 @@ using DSharpPlus.CommandsNext;
 
 
 
-namespace RezetBuilder
-{
-    // ========== REZET ENGINE V8 ELITE.
-    class EngineV8E
-    {
+namespace RezetBuilder {
+    // ========== REZET ARCH ENGINE 8.
+    class ArchE8 {
         // ========== IGNITES:
         public static DiscordShardedClient? RezetRazor;
         public static CommandsNextExtension? CommandsRazor;
@@ -21,8 +19,7 @@ namespace RezetBuilder
 
 
 
-        public static async Task EngineStart()
-        {
+        public static async Task EngineStart() {
             // ========== GET THE TOKEN:
             var configPath = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "obj", "config.json");
             var configJson = await File.ReadAllTextAsync(configPath);
@@ -32,8 +29,7 @@ namespace RezetBuilder
 
 
             // ========== CLIENT BUILDER:
-            var rzt = new DiscordConfiguration
-            {
+            var rzt = new DiscordConfiguration {
                 Token = config?.Token,
                 TokenType = TokenType.Bot,
                 ShardCount = 1,
@@ -51,7 +47,6 @@ namespace RezetBuilder
                 MinimumLogLevel = Microsoft.Extensions.Logging.LogLevel.Error,
             };
             RezetRazor = new DiscordShardedClient(rzt);
-
         }
     }
     class Config { public string? Token { get; set; } public string? Keydb { get; set; } }
