@@ -1,7 +1,7 @@
 ﻿namespace Program {
     class Start {
         private static async Task Main() {
-            await Task.CompletedTask;
+            await RezetBuilder.ArchE8.EngineStart();
         }
     }
 }

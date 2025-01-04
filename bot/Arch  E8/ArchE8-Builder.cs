@@ -12,10 +12,7 @@ namespace RezetBuilder {
     class ArchE8 {
         // ========== IGNITES:
         public static DiscordShardedClient? RezetRazor;
-        public static CommandsNextExtension? CommandsRazor;
         // public static HerrscherService? HerrscherRazor;
-        private static Timer? _connectionCheckTimer;
-
 
 
 
@@ -47,6 +44,10 @@ namespace RezetBuilder {
                 MinimumLogLevel = Microsoft.Extensions.Logging.LogLevel.Error,
             };
             RezetRazor = new DiscordShardedClient(rzt);
+            
+            await RezetRazor.StartAsync();
+            await Handlers.CommandsHandler.SetupSlashCommands(RezetRazor);
+            await Task.Delay(-1);
         }
     }
     class Config { public string? Token { get; set; } public string? Keydb { get; set; } }

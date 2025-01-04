@@ -20,9 +20,20 @@ namespace RezetBuilder.Handlers {
         }
         public static async Task SetupSlashCommands(DiscordShardedClient client) {
             foreach (var shard in client.ShardClients.Values) {
-                var commands = shard.UseSlashCommands();
+                Console.WriteLine($"shard: {shard.ShardId}");
+                var command = shard.UseSlashCommands();
+                command.RegisterCommands<CommandTask>();
             }
             await Task.CompletedTask;
+        }
+    }
+
+
+
+    public class CommandTask : ApplicationCommandModule {
+        [SlashCommand("task", "task")]
+        public static async Task C(InteractionContext ctx) {
+            await ctx.CreateResponseAsync("nice!");
         }
     }
 }
