@@ -5,7 +5,7 @@ using DSharpPlus.SlashCommands;
 
 
 
-namespace RezetBuilder.Handlers {
+namespace Rezet.Handlers {
     public static class CommandsHandler {
         public static async Task SetupPrefixCommands(DiscordShardedClient client) {
             foreach (var shard in client.ShardClients.Values) {
@@ -20,20 +20,11 @@ namespace RezetBuilder.Handlers {
         }
         public static async Task SetupSlashCommands(DiscordShardedClient client) {
             foreach (var shard in client.ShardClients.Values) {
-                Console.WriteLine($"shard: {shard.ShardId}");
                 var command = shard.UseSlashCommands();
-                command.RegisterCommands<CommandTask>();
+
+                //command.RegisterCommands<>();
             }
             await Task.CompletedTask;
-        }
-    }
-
-
-
-    public class CommandTask : ApplicationCommandModule {
-        [SlashCommand("task", "task")]
-        public static async Task C(InteractionContext ctx) {
-            await ctx.CreateResponseAsync("nice!");
         }
     }
 }
