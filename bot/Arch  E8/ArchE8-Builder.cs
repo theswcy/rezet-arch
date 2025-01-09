@@ -7,7 +7,7 @@ using DSharpPlus.CommandsNext;
 
 
 
-namespace RezetBuilder {
+namespace Rezet {
     // ========== REZET ARCH ENGINE 8.
     class ArchE8 {
         // ========== IGNITES:
@@ -47,6 +47,7 @@ namespace RezetBuilder {
             
             await RezetRazor.StartAsync();
             await Handlers.CommandsHandler.SetupSlashCommands(RezetRazor);
+            await Handlers.EventsHandler.SetupEvents(RezetRazor);
             await Task.Delay(-1);
         }
     }
