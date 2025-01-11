@@ -24,7 +24,7 @@ Public repository
 <h2>
   🍣 - About
 </h2>
-  A <strong>Rezet</strong> é uma aplicação extremamente poderosa, dedicada a <strong>segurança</strong>, <strong>moderação</strong> e <strong>utilidades</strong>
+  A <strong>Rezet</strong> é uma aplicação extremamente poderosa, dedicada a <strong>moderação</strong> e <strong>utilidades</strong>
   para comunidades no Discord.
 <br>
 <h3>
@@ -35,7 +35,7 @@ Public repository
 <h3>
   Sentry version
 </h3>
-<li>Version: <code>Sentry v0.10</code></li>
+<li>Version: <code>Mecha v0.10</code></li>
 <li>Framework: <code>.NET 9.0.101</code></li>
 <li>Database: <code>MongoDB Atlas</code></li>
 <br><br>
