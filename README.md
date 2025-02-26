@@ -16,7 +16,6 @@ Public repository
 </h3>
 <p align=center>
   Developer: <a href="https://github.com/theswcy" target="_blank">theswcy</a><br>
-  Support: <a href="https://discord.com/users/834794085243945021">arcanjo_tda</a>
 </p>
 <br><br>
 
