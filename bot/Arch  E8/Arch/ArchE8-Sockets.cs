@@ -10,3 +10,17 @@
 // - Reconnect após falha com o socket.
 // - Reconnect após conexão zumbi.
 // - Disconnect and Reconnect após falha grave.
+
+
+
+using DSharpPlus;
+using DSharpPlus.Entities;
+using DSharpPlus.EventArgs;
+
+
+
+namespace Rezet.Sockets {
+    public class DiscordSockets {
+        
+    }
+}
