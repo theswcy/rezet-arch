@@ -1,6 +1,7 @@
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.SlashCommands;
+using Rezet.Logging;
 
 
 
@@ -16,6 +17,7 @@ namespace Rezet.Handlers {
                     EnableMentionPrefix = true
                 });
             }
+            RezetLogs.PrefixCommandsConnect();
             await Task.CompletedTask;
         }
         public static async Task SetupSlashCommands(DiscordShardedClient client) {
@@ -24,6 +26,7 @@ namespace Rezet.Handlers {
 
                 //command.RegisterCommands<>();
             }
+            RezetLogs.SlashCommandsConnect();
             await Task.CompletedTask;
         }
     }
