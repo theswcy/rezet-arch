@@ -9,8 +9,6 @@ using DSharpPlus;
 #pragma warning disable CS8602
 namespace Rezet.LuminyCache {
     public class GuildCache {
-
-
         // ========== SAVE THE GUILD:
         public static void SaveGuild(DiscordClient client, string GuildId, BsonDocument Structure) {
             var policy = new CacheItemPolicy {
@@ -30,7 +28,7 @@ namespace Rezet.LuminyCache {
             }
         }
         // ========== GET THE GUILD:
-        public BsonDocument? GetGuild(DiscordClient client, string GuildId) {
+        public static BsonDocument? GetGuild(DiscordClient client, string GuildId) {
             if (client.ShardId == 0) {
                 var LumiCache = new GuildCache_shard_0();
                 return LumiCache.CacheShard0.Get(GuildId) as BsonDocument;
