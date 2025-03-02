@@ -1,9 +1,24 @@
-// Módulo para previnir spam e falha em funções.
+using System.Runtime.Caching;
 
-// Rate limit:
-// - A cada 1 comando executado = intervalo de tempo de 2 segundos.
-// - Cada rate limit será armazenado no cache: { "user_id": 1 }    1 = true.
 
-// Evitar múltiplas respostas:
-// - Verificar se a última mensagem pertence a Rezet.
-// - Caso seja da Rezet, interromper processo, caso contrário, prosseguir.
+
+namespace Rezet.LuminyCache {
+    public class RateLimitCahce {
+        private readonly MemoryCache _cache;
+
+        
+
+        public RateLimitCahce() {
+            _cache = MemoryCache.Default;
+        }
+
+
+
+        public void SaveUser(ulong Key) {
+            var policy = new CacheItemPolicy {
+                AbsoluteExpiration = DateTimeOffset.UtcNow.AddSeconds(2)
+            };
+            _cache.Set(Key.ToString(),1 ,policy);
+        }
+    }
+}
