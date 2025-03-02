@@ -14,11 +14,15 @@ namespace Rezet.LuminyCache {
 
 
 
-        public void SaveUser(ulong Key) {
+        public bool VerifyUser(ulong Key) {
+            if (_cache.Get(Key.ToString()) != null) {
+                return false;
+            }
             var policy = new CacheItemPolicy {
                 AbsoluteExpiration = DateTimeOffset.UtcNow.AddSeconds(2)
             };
             _cache.Set(Key.ToString(),1 ,policy);
+            return true;
         }
     }
 }
