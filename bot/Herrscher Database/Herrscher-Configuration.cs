@@ -1,1 +1,0 @@
-// Configurações principais para conexão com o MongoDB.
