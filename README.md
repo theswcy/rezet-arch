@@ -26,6 +26,7 @@ Public repository
   A <strong>Rezet</strong> é uma aplicação extremamente poderosa, dedicada a <strong>moderação</strong> e <strong>utilidades</strong>
   para comunidades no Discord.
 <br>
+<br>
 <h3>
   Stable version [ not published ]
 </h3>
@@ -34,7 +35,7 @@ Public repository
 <h3>
   Sentry version
 </h3>
-<li>Version: <code>Mecha v0.10</code></li>
+<li>Version: <code>Mecha v0.23</code></li>
 <li>Framework: <code>.NET 9.0.101</code></li>
 <li>Database: <code>MongoDB Atlas</code></li>
 <br><br>
