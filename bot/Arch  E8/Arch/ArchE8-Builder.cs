@@ -61,7 +61,7 @@ namespace Rezet {
                 await Handlers.EventsHandler.SetupEvents(RezetRazor);
                 await Status.DiscordStatus.StatusReady(RezetRazor);
                 await AOCore.ShardsSockets.SetupSocketsEvents(RezetRazor);
-                RezetLogs.FinishedBuild();
+                RezetLogs.FinishedBuild(RezetRazor.CurrentUser.Username);
                 await Task.Delay(-1);
             } catch (Exception ex) {
                 RezetLogs.ErrorBuild(ex.Message);
