@@ -62,9 +62,9 @@ namespace Rezet.Logging {
             Console.WriteLine("    │    [ ✓ ] All guilds on Luminy Cache!");
             Cons.Consc("clear");
         }
-        public static void FinishedBuild() {
+        public static void FinishedBuild(string name) {
             Cons.Consc("blue");
-           Console.WriteLine($"    │    [ ✓ ] Rezet is ready!!!!!!!!");
+           Console.WriteLine($"    │    [ ✓ ] {name} is ready!!!!!!!!");
             Console.WriteLine("    │");
            Console.WriteLine($"    ╰────────── Ready on .NET {Environment.Version}!");
             Cons.Consc("clear");
