@@ -35,7 +35,7 @@ Public repository
 <h3>
   Sentry version
 </h3>
-<li>Version: <code>Mecha v0.25</code></li>
+<li>Version: <code>Mecha v0.27</code></li>
 <li>Framework: <code>.NET 9.0.101</code></li>
 <li>Database: <code>MongoDB Atlas</code></li>
 <br><br>
