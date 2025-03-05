@@ -23,26 +23,19 @@ using DSharpPlus.EventArgs;
 namespace Rezet.Status {
     public class DiscordStatus {
         public static readonly TimeSpan StatusUpdateInterval = TimeSpan.FromSeconds(20);
-        public static async Task StatusReady(DiscordShardedClient client) {
-            foreach (var shard in client.ShardClients.Values) {
-                shard.Ready += UpdateStatus;
-            }
-            await Task.CompletedTask;
-        }
-
-
-
-        private static async Task UpdateStatus(DiscordClient client, ReadyEventArgs e) {
-            while (true) {
-                var activity = new DiscordActivity($"action! [ {client.ShardId} - {client.Guilds.Count} / {client.Ping}ms ]", ActivityType.Playing);
-                if (client.Ping > 200) {
+        public static async Task UpdateStatus(DiscordShardedClient client) {
+            foreach(var shard in client.ShardClients.Values) {
+                while (true) {
+                var activity = new DiscordActivity($"action! [ {shard.ShardId} - {shard.Guilds.Count} / {shard.Ping}ms ]", ActivityType.Playing);
+                if (shard.Ping > 200) {
                     await client.UpdateStatusAsync(activity, UserStatus.DoNotDisturb);
-                } else if (client.Ping > 100) {
+                } else if (shard.Ping > 100) {
                     await client.UpdateStatusAsync(activity, UserStatus.Idle);
                 } else {
                     await client.UpdateStatusAsync(activity, UserStatus.Online);
                 }
                 await Task.Delay(StatusUpdateInterval);
+            }
             }
         }
     }
