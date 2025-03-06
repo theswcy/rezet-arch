@@ -14,14 +14,16 @@ namespace Rezet.LuminyCache {
 
 
 
-        public bool VerifyUser(ulong Key) {
+        public async Task<bool> VerifyUser(ulong Key) {
             if (_cache.Get(Key.ToString()) != null) {
+                await Task.CompletedTask;
                 return false;
             }
             var policy = new CacheItemPolicy {
                 AbsoluteExpiration = DateTimeOffset.UtcNow.AddSeconds(2)
             };
             _cache.Set(Key.ToString(),1 ,policy);
+            await Task.CompletedTask;
             return true;
         }
     }
