@@ -4,6 +4,8 @@
 
 
 
+using DSharpPlus;
+
 public class Cons {
     public static void Consc(string color) {
         if (color == "red") {
@@ -14,6 +16,9 @@ public class Cons {
         }
         else if (color == "yellow") {
             Console.ForegroundColor = ConsoleColor.Yellow;
+        }
+        else if (color == "cyan") {
+            Console.ForegroundColor = ConsoleColor.Cyan;
         }
 
 
@@ -70,7 +75,7 @@ namespace Rezet.Logging {
             Cons.Consc("clear");
         }
         public static void ErrorBuild(string why) {
-            Cons.Consc("blue");
+            Cons.Consc("red");
             Console.WriteLine(" ");
            Console.WriteLine($"    │    [ ✕ ] Rezet error...");
            Console.WriteLine($"    ┴");
@@ -88,9 +93,9 @@ namespace Rezet.Logging {
         // ========== SOCKETS:
         public static void SocketOpened(int shard) {
             DateTime now = DateTime.Now; var y = now.ToString("dd/MM/yyyy - HH:mm:ss");
-            Cons.Consc("blue");
+            Cons.Consc("cyan");
             Console.WriteLine(" ");
-           Console.WriteLine($"    ╭ [ 🟢 - SHARD {shard} ] Socket opened!");
+           Console.WriteLine($"    ╭ [ ☢️ - SHARD {shard} ] Socket opened!");
            Console.WriteLine($"    ╰────────── {y}");
             Cons.Consc("clear");
         }
