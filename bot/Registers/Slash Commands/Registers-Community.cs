@@ -10,7 +10,6 @@ public class CommunityCommands : ApplicationCommandModule {
     private static async Task Informations(InteractionContext ctx) {
         try {
             await ctx.DeferAsync();
-            await ctx.Channel.TriggerTypingAsync();
 
 
             await Task.CompletedTask;
@@ -29,7 +28,6 @@ public class CommunityCommands : ApplicationCommandModule {
     private static async Task Description(InteractionContext ctx) {
         try {
             await ctx.DeferAsync();
-            await ctx.Channel.TriggerTypingAsync();
 
 
             await Task.CompletedTask;
@@ -48,7 +46,6 @@ public class CommunityCommands : ApplicationCommandModule {
     private static async Task Stats(InteractionContext ctx) {
         try {
             await ctx.DeferAsync();
-            await ctx.Channel.TriggerTypingAsync();
 
 
             await Task.CompletedTask;

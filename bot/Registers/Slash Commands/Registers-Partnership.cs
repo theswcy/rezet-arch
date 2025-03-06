@@ -12,7 +12,6 @@ public class PartnershipCommands : ApplicationCommandModule {
         private static async Task Dashboard(InteractionContext ctx) {
             try {
                 await ctx.DeferAsync();
-                await ctx.Channel.TriggerTypingAsync();
 
 
                 await Task.CompletedTask;
@@ -36,7 +35,6 @@ public class PartnershipCommands : ApplicationCommandModule {
         ) {
             try {
                 await ctx.DeferAsync();
-                await ctx.Channel.TriggerTypingAsync();
 
 
                 await Task.CompletedTask;
@@ -58,7 +56,6 @@ public class PartnershipCommands : ApplicationCommandModule {
         private static async Task Local(InteractionContext ctx) {
             try {
                 await ctx.DeferAsync();
-                await ctx.Channel.TriggerTypingAsync();
 
 
                 await Task.CompletedTask;
@@ -77,7 +74,6 @@ public class PartnershipCommands : ApplicationCommandModule {
         private static async Task Global(InteractionContext ctx) {
             try {
                 await ctx.DeferAsync();
-                await ctx.Channel.TriggerTypingAsync();
 
                 
                 await Task.CompletedTask;

@@ -14,7 +14,6 @@ public class ChatCommands : ApplicationCommandModule{
     ) {
         try {
             await ctx.DeferAsync();
-            await ctx.Channel.TriggerTypingAsync();
 
 
             await Task.CompletedTask;

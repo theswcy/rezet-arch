@@ -1,16 +1,19 @@
 using DSharpPlus.Entities;
 using DSharpPlus.SlashCommands;
 using Rezet.Logging;
+using Rezet.SlashCommands.SystemCommands;
 
 
 
 [SlashCommandGroup("my", "My system.")]
 public class RezetSystems : ApplicationCommandModule {
     [SlashCommand("system", "✨ | Rezet Systems.")]
-    public static async Task MySystems(InteractionContext ctx) {
+    private static async Task MySystems(InteractionContext ctx) {
         try {
             await ctx.DeferAsync();
-            await ctx.Channel.TriggerTypingAsync();
+
+
+            await Sys.Informations(ctx);
 
 
             await Task.CompletedTask;

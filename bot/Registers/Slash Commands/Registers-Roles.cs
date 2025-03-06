@@ -14,7 +14,6 @@ public class RolesCommands : ApplicationCommandModule {
     ) {
         try {
             await ctx.DeferAsync();
-            await ctx.Channel.TriggerTypingAsync();
 
 
             await Task.CompletedTask;
@@ -37,7 +36,6 @@ public class RolesCommands : ApplicationCommandModule {
     ) {
         try {
             await ctx.DeferAsync();
-            await ctx.Channel.TriggerTypingAsync();
 
 
             await Task.CompletedTask;
@@ -58,7 +56,6 @@ public class RolesCommands : ApplicationCommandModule {
     ) {
         try {
             await ctx.DeferAsync();
-            await ctx.Channel.TriggerTypingAsync();
 
 
             await Task.CompletedTask;
@@ -98,7 +95,6 @@ public class RolesCommands : ApplicationCommandModule {
     ) {
         try {
             await ctx.DeferAsync();
-            await ctx.Channel.TriggerTypingAsync();
 
 
             await Task.CompletedTask;
