@@ -22,9 +22,12 @@ namespace Rezet.Handlers {
         }
         public static async Task SetupSlashCommands(DiscordShardedClient client) {
             foreach (var shard in client.ShardClients.Values) {
-                var command = shard.UseSlashCommands();
+                var slash = shard.UseSlashCommands();
 
-                //command.RegisterCommands<>();
+                slash.RegisterCommands<PartnershipCommands>();
+                slash.RegisterCommands<CommunityCommands>();
+                slash.RegisterCommands<RolesCommands>();
+                slash.RegisterCommands<ChatCommands>();
             }
             RezetLogs.SlashCommandsConnect();
             await Task.CompletedTask;
