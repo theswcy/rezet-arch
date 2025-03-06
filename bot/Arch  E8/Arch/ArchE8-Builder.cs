@@ -1,5 +1,6 @@
 using System.Text.Json;
 using DSharpPlus;
+using DSharpPlus.Entities;
 using Rezet.HerrscherSearch;
 using Rezet.Logging;
 
@@ -55,16 +56,18 @@ namespace Rezet {
 
 
                 // ========== START!
+                var activity = new DiscordActivity("action!", ActivityType.Playing);
                 await RezetRazor.StartAsync();
-                await Handlers.CommandsHandler.SetupSlashCommands(RezetRazor);
-                await Handlers.CommandsHandler.SetupPrefixCommands(RezetRazor);
-                await Handlers.EventsHandler.SetupEvents(RezetRazor);
-                await AOCore.ShardsSockets.SetupSocketsEvents(RezetRazor);
+                await Handlers.CommandsHandlers.Activate(RezetRazor);
+                await Handlers.EventsHandler.Activate(RezetRazor);
+                await RezetRazor.UpdateStatusAsync(activity, UserStatus.DoNotDisturb);
+                await AOCore.ShardsSockets.Activate(RezetRazor);
                 RezetLogs.FinishedBuild(RezetRazor.CurrentUser.Username);
-                await Status.DiscordStatus.UpdateStatus(RezetRazor);
+
+
                 await Task.Delay(-1);
             } catch (Exception ex) {
-                RezetLogs.ErrorBuild(ex.Message);
+                RezetLogs.ErrorBuild($"- {ex.GetType()}\n- {ex.Message}\n{ex.StackTrace}");
             }
         }
     }
