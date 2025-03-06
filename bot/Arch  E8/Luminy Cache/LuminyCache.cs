@@ -10,7 +10,7 @@ using DSharpPlus;
 namespace Rezet.LuminyCache {
     public class GuildCache {
         // ========== SAVE THE GUILD:
-        public static async Task SaveGuild(DiscordClient client, string GuildId, BsonDocument Structure) {
+        public static void SaveGuild(DiscordClient client, string GuildId, BsonDocument Structure) {
             var policy = new CacheItemPolicy {
                 AbsoluteExpiration = DateTimeOffset.UtcNow.AddHours(24)
             };
@@ -19,17 +19,13 @@ namespace Rezet.LuminyCache {
             if (client.ShardId == 0) {
                 var LumiCache = new GuildCache_shard_0();
                 LumiCache.CacheShard0.Add(GuildId, Structure, policy);
-                await Task.CompletedTask;
             } else if (client.ShardId == 1) {
                 var LumiCache = new GuildCache_shard_1();
                 LumiCache.CacheShard1.Add(GuildId, Structure, policy);
-                await Task.CompletedTask;
             } else if (client.ShardId == 2) {
                 var LumiCache = new GuildCache_shard_2();
                 LumiCache.CacheShard2.Add(GuildId, Structure, policy);
-                await Task.CompletedTask;
             }
-            await Task.CompletedTask;
         }
         // ========== GET THE GUILD:
         public static BsonDocument? GetGuild(DiscordClient client, string GuildId) {
@@ -47,19 +43,16 @@ namespace Rezet.LuminyCache {
             }
         }
         // ========== REMOVE THE GUILD:
-        public static async Task RemoveGuild(DiscordClient client, string GuildId) {
+        public static void RemoveGuild(DiscordClient client, string GuildId) {
             if (client.ShardId == 0) {
                 var LumiCache = new GuildCache_shard_0();
                 LumiCache.CacheShard0.Remove(GuildId);
-                await Task.CompletedTask;
             } else if (client.ShardId == 1) {
                 var LumiCache = new GuildCache_shard_1();
                 LumiCache.CacheShard1.Remove(GuildId);
-                await Task.CompletedTask;
             } else if (client.ShardId == 2) {
                 var LumiCache = new GuildCache_shard_2();
                 LumiCache.CacheShard2.Remove(GuildId);
-                await Task.CompletedTask;
             }
         }
 
