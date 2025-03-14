@@ -2,6 +2,7 @@ using DSharpPlus.Entities;
 using DSharpPlus.SlashCommands;
 using Rezet.Logging;
 using Rezet.SlashCommands.SystemCommands;
+using Rezet.Verify;
 
 
 
@@ -13,6 +14,7 @@ public class RezetSystems : ApplicationCommandModule {
             await ctx.DeferAsync();
 
 
+            if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
             await Sys.Informations(ctx);
 
 
