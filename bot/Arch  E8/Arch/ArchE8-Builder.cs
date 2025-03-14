@@ -32,7 +32,7 @@ namespace Rezet {
                 var rzt = new DiscordConfiguration {
                     Token = config?.Token,
                     TokenType = TokenType.Bot,
-                    ShardCount = 1, // NOT FINISHED!
+                    ShardCount = 1,
                     Intents = 
                         DiscordIntents.Guilds |
                         DiscordIntents.GuildBans | 
