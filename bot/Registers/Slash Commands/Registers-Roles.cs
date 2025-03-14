@@ -1,6 +1,7 @@
 using DSharpPlus.Entities;
 using DSharpPlus.SlashCommands;
 using Rezet.Logging;
+using Rezet.Verify;
 
 
 
@@ -14,6 +15,9 @@ public class RolesCommands : ApplicationCommandModule {
     ) {
         try {
             await ctx.DeferAsync();
+
+
+            if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
 
 
             await Task.CompletedTask;
@@ -38,6 +42,9 @@ public class RolesCommands : ApplicationCommandModule {
             await ctx.DeferAsync();
 
 
+            if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
+
+
             await Task.CompletedTask;
         } catch (Exception ex) {
             RezetLogs.SlashCommandError(
@@ -56,6 +63,9 @@ public class RolesCommands : ApplicationCommandModule {
     ) {
         try {
             await ctx.DeferAsync();
+
+
+            if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
 
 
             await Task.CompletedTask;
@@ -95,6 +105,9 @@ public class RolesCommands : ApplicationCommandModule {
     ) {
         try {
             await ctx.DeferAsync();
+
+
+            if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
 
 
             await Task.CompletedTask;
