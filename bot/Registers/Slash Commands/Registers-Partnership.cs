@@ -1,6 +1,7 @@
 using DSharpPlus.Entities;
 using DSharpPlus.SlashCommands;
 using Rezet.Logging;
+using Rezet.Verify;
 
 
 
@@ -12,6 +13,9 @@ public class PartnershipCommands : ApplicationCommandModule {
         private static async Task Dashboard(InteractionContext ctx) {
             try {
                 await ctx.DeferAsync();
+
+
+                if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
 
 
                 await Task.CompletedTask;
@@ -37,6 +41,9 @@ public class PartnershipCommands : ApplicationCommandModule {
                 await ctx.DeferAsync();
 
 
+                if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
+
+
                 await Task.CompletedTask;
             } catch (Exception ex) {
                 RezetLogs.SlashCommandError(
@@ -58,6 +65,9 @@ public class PartnershipCommands : ApplicationCommandModule {
                 await ctx.DeferAsync();
 
 
+                if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
+
+
                 await Task.CompletedTask;
             } catch (Exception ex) {
                 RezetLogs.SlashCommandError(
@@ -74,6 +84,9 @@ public class PartnershipCommands : ApplicationCommandModule {
         private static async Task Global(InteractionContext ctx) {
             try {
                 await ctx.DeferAsync();
+
+
+                if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
 
                 
                 await Task.CompletedTask;
