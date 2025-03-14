@@ -67,6 +67,11 @@ namespace Rezet.Logging {
             Console.WriteLine("    │    [ ✓ ] All guilds on Luminy Cache!");
             Cons.Consc("clear");
         }
+        public static void ShardStart(int shard) {
+            Cons.Consc("blue");
+           Console.WriteLine($"    │    [ ✓ ] Shard {shard} ready!");
+            Cons.Consc("clear");
+        }
         public static void FinishedBuild(string name) {
             Cons.Consc("blue");
            Console.WriteLine($"    │    [ ✓ ] {name} is ready!!!!!!!!");
