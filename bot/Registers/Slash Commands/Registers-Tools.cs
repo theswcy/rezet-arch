@@ -1,6 +1,7 @@
 using DSharpPlus.Entities;
 using DSharpPlus.SlashCommands;
 using Rezet.Logging;
+using Rezet.Verify;
 
 
 
@@ -14,6 +15,9 @@ public class ChatCommands : ApplicationCommandModule{
     ) {
         try {
             await ctx.DeferAsync();
+
+
+            if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
 
 
             await Task.CompletedTask;
