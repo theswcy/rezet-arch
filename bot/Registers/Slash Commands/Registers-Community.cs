@@ -1,6 +1,11 @@
+using DSharpPlus;
 using DSharpPlus.Entities;
 using DSharpPlus.SlashCommands;
+using Microsoft.VisualBasic;
 using Rezet.Logging;
+using Rezet.SlashCommands.CommunityCommands;
+using Rezet.SlashCommands.SystemCommands;
+using Rezet.Verify;
 
 
 
@@ -10,6 +15,10 @@ public class CommunityCommands : ApplicationCommandModule {
     private static async Task Informations(InteractionContext ctx) {
         try {
             await ctx.DeferAsync();
+
+
+            if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
+            await GuildInfo.Command(ctx);
 
 
             await Task.CompletedTask;
@@ -25,9 +34,15 @@ public class CommunityCommands : ApplicationCommandModule {
         }
     }
     [SlashCommand("description", "📘 | Alterar descrição da comunidade!")]
-    private static async Task Description(InteractionContext ctx) {
+    private static async Task Description(InteractionContext ctx,
+        [Option("description", "Nova descrição!")] string description
+    ) {
         try {
             await ctx.DeferAsync();
+
+
+            if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
+            await GuildDescription.Command(ctx, description);
 
 
             await Task.CompletedTask;
@@ -46,6 +61,10 @@ public class CommunityCommands : ApplicationCommandModule {
     private static async Task Stats(InteractionContext ctx) {
         try {
             await ctx.DeferAsync();
+
+
+            if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
+            await GuildStats.Command(ctx);
 
 
             await Task.CompletedTask;
