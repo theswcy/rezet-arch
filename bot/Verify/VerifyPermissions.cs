@@ -11,7 +11,7 @@ namespace Rezet.Verify {
             var m = await ctx.Guild.GetMemberAsync(ctx.User.Id);
             
 
-            if (!m.Permissions.HasPermission(permission)) {
+            if (!m.Permissions.HasPermission(permission) || !m.Permissions.HasPermission(Permissions.Administrator)) {
                 await ctx.EditResponseAsync(
                     new DiscordWebhookBuilder()
                         .WithContent($"Hey, você não tem a permissão `{permission}` para usar o comando!")
@@ -25,7 +25,7 @@ namespace Rezet.Verify {
             var m = await ctx.Guild.GetMemberAsync(ctx.User.Id);
 
 
-            if (!m.Permissions.HasPermission(permission)) {
+            if (!m.Permissions.HasPermission(permission) || !m.Permissions.HasPermission(Permissions.Administrator)) {
                 await ctx.RespondAsync($"Hey, você não tem a permissão `{permission}` para usar o comando!");
                 return false;
             } else {
@@ -41,7 +41,7 @@ namespace Rezet.Verify {
             var m = await ctx.Guild.GetMemberAsync(ctx.Client.CurrentUser.Id);
             
 
-            if (!m.Permissions.HasPermission(permission)) {
+            if (!m.Permissions.HasPermission(permission) || !m.Permissions.HasPermission(Permissions.Administrator)) {
                 await ctx.EditResponseAsync(
                     new DiscordWebhookBuilder()
                         .WithContent($"Hey, eu não tenho a permissão `{permission}` para executar o comando!")
@@ -55,7 +55,7 @@ namespace Rezet.Verify {
             var m = await ctx.Guild.GetMemberAsync(ctx.Client.CurrentUser.Id);
 
 
-            if (!m.Permissions.HasPermission(permission)) {
+            if (!m.Permissions.HasPermission(permission) || !m.Permissions.HasPermission(Permissions.Administrator)) {
                 await ctx.RespondAsync($"Hey, eu não tenho a permissão `{permission}` para executar o comando!");
                 return false;
             } else {
