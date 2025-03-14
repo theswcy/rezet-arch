@@ -96,7 +96,7 @@ namespace Rezet.SlashCommands.SystemCommands {
 
 
 
-                await ctx.EditResponseAsync(
+            await ctx.EditResponseAsync(
                 new DiscordWebhookBuilder()
                     .WithContent("Bip bup bip!")
                     .AddEmbed(MachineInformations)
