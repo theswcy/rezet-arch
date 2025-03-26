@@ -7,11 +7,12 @@ using Rezet.LuminyCache;
 
 
 
+#pragma warning disable CS8602
 #pragma warning disable CS8603
 namespace Rezet.HerrscherSearch {
     public class HerrscherServices {
         public readonly IMongoDatabase? _database;
-        private static readonly int HerrschersCount = 1;
+        public static readonly int HerrschersCount = 2;
         public HerrscherServices(string ConnectionString, string HerrscherExtension) {
             try {
                 var client = new MongoClient(ConnectionString);
@@ -34,7 +35,7 @@ namespace Rezet.HerrscherSearch {
                     return GuildStructure;
                 } else {
                     for (int HerrscherNumber = 0; HerrscherNumber <= HerrschersCount; HerrscherNumber++) {
-                        var HerrscherExtension = _database?.GetCollection<BsonDocument>("guilds");
+                        var HerrscherExtension = _database.GetCollection<BsonDocument>("HerrscherGuilds");
                         var HerrscherFilter = Builders<BsonDocument>.Filter.Eq("_id", $"shard_{HerrscherNumber}");
                         var SelectedHerrscher = HerrscherExtension.Find(HerrscherFilter).FirstOrDefault();
 
@@ -62,7 +63,7 @@ namespace Rezet.HerrscherSearch {
         public BsonDocument? GetHerrscherStructure(DiscordGuild Guild) {
             try {
                 for (int HerrscherNumber = 0; HerrscherNumber <= HerrschersCount; HerrscherNumber++) {
-                    var HerrscherExtension = _database?.GetCollection<BsonDocument>("guilds");
+                    var HerrscherExtension = _database.GetCollection<BsonDocument>("HerrscherGuilds");
                     var HerrscherFilter = Builders<BsonDocument>.Filter.Eq("_id", $"shard_{HerrscherNumber}");
                     var SelectedHerrscher = HerrscherExtension.Find(HerrscherFilter).FirstOrDefault();
 
