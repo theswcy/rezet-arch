@@ -1,12 +1,9 @@
-using System;
 using System.Runtime.Caching;
-using MongoDB.Driver;
 using MongoDB.Bson;
 using DSharpPlus;
 
 
 
-#pragma warning disable CS8602
 namespace Rezet.LuminyCache {
     public class GuildCache {
         // ========== SAVE THE GUILD:
