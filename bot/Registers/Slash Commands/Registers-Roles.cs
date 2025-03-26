@@ -5,6 +5,17 @@ using Rezet.Verify;
 
 
 
+// ========== COMMANDS LIST:
+//      - /role add: to create.
+//      - /role remove: to create.
+//      - /role info: to create.
+//      - /role create: to create.
+
+// ========== NOTE:
+// Create commands function and update options.
+
+
+
 [SlashCommandGroup("role", "Role Settings")]
 public class RolesCommands : ApplicationCommandModule {
     [SlashCommand("add", "📗 | Adicionar um cargo a um usuário.")]
@@ -18,18 +29,14 @@ public class RolesCommands : ApplicationCommandModule {
 
 
             if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
-
-
-            await Task.CompletedTask;
         } catch (Exception ex) {
             RezetLogs.SlashCommandError(
-                "/partnership open dashboard",
+                "/role add",
                 $"{ctx.User.Username}", $"{ctx.User.Id}",
                 $"{ctx.Guild.Name}", $"{ctx.Guild.Id}",
                 $"{ctx.Channel.Name}", $"{ctx.Channel.Id}",
                 $"- {ex.GetType()}\n- {ex.Message}\n{ex.StackTrace}"
             );
-            await Task.CompletedTask;
         }
     }
     [SlashCommand("remove", "📗 | Remover um cargo de um usuário.")]
@@ -43,18 +50,14 @@ public class RolesCommands : ApplicationCommandModule {
 
 
             if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
-
-
-            await Task.CompletedTask;
         } catch (Exception ex) {
             RezetLogs.SlashCommandError(
-                "/partnership open dashboard",
+                "/role remove",
                 $"{ctx.User.Username}", $"{ctx.User.Id}",
                 $"{ctx.Guild.Name}", $"{ctx.Guild.Id}",
                 $"{ctx.Channel.Name}", $"{ctx.Channel.Id}",
                 $"- {ex.GetType()}\n- {ex.Message}\n{ex.StackTrace}"
             );
-            await Task.CompletedTask;
         }
     }
     [SlashCommand("info", "📗 | Mostrar as informações de um cargo!")]
@@ -66,18 +69,14 @@ public class RolesCommands : ApplicationCommandModule {
 
 
             if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
-
-
-            await Task.CompletedTask;
         } catch (Exception ex) {
             RezetLogs.SlashCommandError(
-                "/partnership open dashboard",
+                "/role info",
                 $"{ctx.User.Username}", $"{ctx.User.Id}",
                 $"{ctx.Guild.Name}", $"{ctx.Guild.Id}",
                 $"{ctx.Channel.Name}", $"{ctx.Channel.Id}",
                 $"- {ex.GetType()}\n- {ex.Message}\n{ex.StackTrace}"
             );
-            await Task.CompletedTask;
         }
     }
     [SlashCommand("create", "📗 | Criar um cargo!")]
@@ -108,18 +107,14 @@ public class RolesCommands : ApplicationCommandModule {
 
 
             if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
-
-
-            await Task.CompletedTask;
         } catch (Exception ex) {
             RezetLogs.SlashCommandError(
-                "/partnership open dashboard",
+                "/role create",
                 $"{ctx.User.Username}", $"{ctx.User.Id}",
                 $"{ctx.Guild.Name}", $"{ctx.Guild.Id}",
                 $"{ctx.Channel.Name}", $"{ctx.Channel.Id}",
                 $"- {ex.GetType()}\n- {ex.Message}\n{ex.StackTrace}"
             );
-            await Task.CompletedTask;
         }
     }
 }

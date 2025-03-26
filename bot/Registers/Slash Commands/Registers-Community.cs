@@ -1,11 +1,17 @@
-using DSharpPlus;
-using DSharpPlus.Entities;
 using DSharpPlus.SlashCommands;
-using Microsoft.VisualBasic;
 using Rezet.Logging;
 using Rezet.SlashCommands.CommunityCommands;
-using Rezet.SlashCommands.SystemCommands;
 using Rezet.Verify;
+
+
+
+// ========== COMMANDS LIST:
+//      - /community informations: OK.
+//      - /community description: OK.
+//      - /community stats: OK.
+
+// ========== NOTE:
+// Nothing to do.
 
 
 
@@ -19,18 +25,14 @@ public class CommunityCommands : ApplicationCommandModule {
 
             if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
             await GuildInfo.Command(ctx);
-
-
-            await Task.CompletedTask;
         } catch (Exception ex) {
             RezetLogs.SlashCommandError(
-                "/partnership open dashboard",
+                "/community informations",
                 $"{ctx.User.Username}", $"{ctx.User.Id}",
                 $"{ctx.Guild.Name}", $"{ctx.Guild.Id}",
                 $"{ctx.Channel.Name}", $"{ctx.Channel.Id}",
                 $"- {ex.GetType()}\n- {ex.Message}\n{ex.StackTrace}"
             );
-            await Task.CompletedTask;
         }
     }
     [SlashCommand("description", "📘 | Alterar descrição da comunidade!")]
@@ -43,18 +45,14 @@ public class CommunityCommands : ApplicationCommandModule {
 
             if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
             await GuildDescription.Command(ctx, description);
-
-
-            await Task.CompletedTask;
         } catch (Exception ex) {
             RezetLogs.SlashCommandError(
-                "/partnership open dashboard",
+                "/community description",
                 $"{ctx.User.Username}", $"{ctx.User.Id}",
                 $"{ctx.Guild.Name}", $"{ctx.Guild.Id}",
                 $"{ctx.Channel.Name}", $"{ctx.Channel.Id}",
                 $"- {ex.GetType()}\n- {ex.Message}\n{ex.StackTrace}"
             );
-            await Task.CompletedTask;
         }
     }
     [SlashCommand("stats", "📘 | Visualizar statísticas da comunidade!")]
@@ -65,18 +63,14 @@ public class CommunityCommands : ApplicationCommandModule {
 
             if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
             await GuildStats.Command(ctx);
-
-
-            await Task.CompletedTask;
         } catch (Exception ex) {
             RezetLogs.SlashCommandError(
-                "/partnership open dashboard",
+                "/community stats",
                 $"{ctx.User.Username}", $"{ctx.User.Id}",
                 $"{ctx.Guild.Name}", $"{ctx.Guild.Id}",
                 $"{ctx.Channel.Name}", $"{ctx.Channel.Id}",
                 $"- {ex.GetType()}\n- {ex.Message}\n{ex.StackTrace}"
             );
-            await Task.CompletedTask;
         }
     }
 }

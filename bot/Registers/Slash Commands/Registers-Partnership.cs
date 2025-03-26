@@ -5,6 +5,18 @@ using Rezet.Verify;
 
 
 
+// ========== COMMANDS LIST:
+//      - /partnership open dashboard: to create.
+//      - /partnership open setup: to create.
+//      - /partnership ranking local: to create.
+//      - /partnership ranking global: to create.
+//      - /partnership ranking points: to create.
+
+// ========== NOTE:
+// Create commands function and update options.
+
+
+
 [SlashCommandGroup("partnership", "Partnerhip's commands.")]
 public class PartnershipCommands : ApplicationCommandModule {
     [SlashCommandGroup("open", "Open the dashboard.")]
@@ -16,9 +28,6 @@ public class PartnershipCommands : ApplicationCommandModule {
 
 
                 if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
-
-
-                await Task.CompletedTask;
             } catch (Exception ex) {
                 RezetLogs.SlashCommandError(
                     "/partnership open dashboard",
@@ -27,7 +36,6 @@ public class PartnershipCommands : ApplicationCommandModule {
                     $"{ctx.Channel.Name}", $"{ctx.Channel.Id}",
                     $"- {ex.GetType()}\n- {ex.Message}\n{ex.StackTrace}"
                 );
-                await Task.CompletedTask;
             }
         }
         [SlashCommand("setup", "🎋 | Configurar função de parcerias.")]
@@ -42,18 +50,14 @@ public class PartnershipCommands : ApplicationCommandModule {
 
 
                 if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
-
-
-                await Task.CompletedTask;
             } catch (Exception ex) {
                 RezetLogs.SlashCommandError(
-                    "/partnership open dashboard",
+                    "/partnership open setup",
                     $"{ctx.User.Username}", $"{ctx.User.Id}",
                     $"{ctx.Guild.Name}", $"{ctx.Guild.Id}",
                     $"{ctx.Channel.Name}", $"{ctx.Channel.Id}",
                     $"- {ex.GetType()}\n- {ex.Message}\n{ex.StackTrace}"
                 );
-                await Task.CompletedTask;
             }
         }
     }
@@ -66,39 +70,54 @@ public class PartnershipCommands : ApplicationCommandModule {
 
 
                 if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
-
-
-                await Task.CompletedTask;
             } catch (Exception ex) {
                 RezetLogs.SlashCommandError(
-                    "/partnership open dashboard",
+                    "/partnership ranking local",
                     $"{ctx.User.Username}", $"{ctx.User.Id}",
                     $"{ctx.Guild.Name}", $"{ctx.Guild.Id}",
                     $"{ctx.Channel.Name}", $"{ctx.Channel.Id}",
                     $"- {ex.GetType()}\n- {ex.Message}\n{ex.StackTrace}"
                 );
-                await Task.CompletedTask;
             }
         }
-        [SlashCommand("global", "🎋 | Leaderboard global de parcerias")]
+        [SlashCommand("global", "🎋 | Leaderboard global de parcerias!")]
         private static async Task Global(InteractionContext ctx) {
             try {
                 await ctx.DeferAsync();
 
 
                 if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
-
-                
-                await Task.CompletedTask;
             } catch (Exception ex) {
                 RezetLogs.SlashCommandError(
-                    "/partnership open dashboard",
+                    "/partnership ranking global",
                     $"{ctx.User.Username}", $"{ctx.User.Id}",
                     $"{ctx.Guild.Name}", $"{ctx.Guild.Id}",
                     $"{ctx.Channel.Name}", $"{ctx.Channel.Id}",
                     $"- {ex.GetType()}\n- {ex.Message}\n{ex.StackTrace}"
                 );
-                await Task.CompletedTask;
+            }
+        }
+        [SlashCommand("points", "🎋 | Modificar os pontos de parceria de algum usuário!")]
+        private static async Task Points(InteractionContext ctx,
+            [Option("action", "Selecione a ação.")]
+                [Choice("add", "Adicionar pontos.")]
+                [Choice("remove", "Remover pontos.")] string Action,
+            [Option("amount", "Quantidade de pontos que serão adicionados ou removidos.")] long Amount,
+            [Option("user", "Usuário que terá os pontos modificados.")] DiscordMember User
+        ) {
+            try {
+                await ctx.DeferAsync();
+
+
+                if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
+            } catch (Exception ex) {
+                RezetLogs.SlashCommandError(
+                    "/partnership ranking global",
+                    $"{ctx.User.Username}", $"{ctx.User.Id}",
+                    $"{ctx.Guild.Name}", $"{ctx.Guild.Id}",
+                    $"{ctx.Channel.Name}", $"{ctx.Channel.Id}",
+                    $"- {ex.GetType()}\n- {ex.Message}\n{ex.StackTrace}"
+                );
             }
         }
     }

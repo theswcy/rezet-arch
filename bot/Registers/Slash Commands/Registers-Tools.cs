@@ -5,7 +5,15 @@ using Rezet.Verify;
 
 
 
-[SlashCommandGroup("clear", "Chat settings.")]
+// ========== COMMANDS LIST:
+//      - /chat clear: to create.
+
+// ========== NOTE:
+// Create commands function.
+
+
+
+[SlashCommandGroup("chat", "Chat settings.")]
 public class ChatCommands : ApplicationCommandModule{
     [SlashCommand("clear", "💭 | Apagar mensagens!")]
     private static async Task Command(InteractionContext ctx,
@@ -18,18 +26,14 @@ public class ChatCommands : ApplicationCommandModule{
 
 
             if (await VerifyChannelType.VerifyPrivateSlash(ctx, ctx.Channel) is false) { return; }
-
-
-            await Task.CompletedTask;
         } catch (Exception ex) {
             RezetLogs.SlashCommandError(
-                "/partnership open dashboard",
+                "/chat clear",
                 $"{ctx.User.Username}", $"{ctx.User.Id}",
                 $"{ctx.Guild.Name}", $"{ctx.Guild.Id}",
                 $"{ctx.Channel.Name}", $"{ctx.Channel.Id}",
                 $"- {ex.GetType()}\n- {ex.Message}\n{ex.StackTrace}"
             );
-            await Task.CompletedTask;
         }
     }
 }
