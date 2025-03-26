@@ -7,9 +7,21 @@ using Rezet.Logging;
 namespace Rezet.AOCore {
     public class ShardsSockets {
         public static async Task Activate(DiscordShardedClient Rezet) {
-            Rezet.SocketOpened += OnSocketOpened;
-            Rezet.SocketClosed += OnSocketClosed;
-            Rezet.SocketErrored += OnSocketErrored;
+            Rezet.SocketOpened += async (client, args) => {
+                await Task.Run(async () => {
+                    await OnSocketOpened(client, args);
+                });
+            };
+            Rezet.SocketClosed += async (client, args) => {
+                await Task.Run(async () => {
+                    await OnSocketClosed(client, args);
+                });
+            };
+            Rezet.SocketErrored += async (client, args) => {
+                await Task.Run(async () => {
+                    await OnSocketErrored(client, args);
+                });
+            };
             await Task.CompletedTask;
         }
         private static async Task OnSocketOpened(DiscordClient client, EventArgs e) {
