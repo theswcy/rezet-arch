@@ -5,6 +5,7 @@
 
 
 using DSharpPlus;
+using DSharpPlus.Entities;
 
 public class Cons {
     public static void Consc(string color) {
@@ -196,6 +197,60 @@ namespace Rezet.Logging {
            Console.WriteLine($"    ╰────────── {y}");
             Cons.Consc("clear");
         }
+        public static void HerrscherNewGuild(DiscordGuild Guild) {
+            DateTime now = DateTime.Now; var y = now.ToString("dd/MM/yyyy - HH:mm:ss");
+            Cons.Consc("yellow");
+            Console.WriteLine(" ");
+           Console.WriteLine($"    ╭ [ 🔷 - HERRSCHER ] {Guild.Name} ({Guild.Id}) updated database!");
+           Console.WriteLine($"    ╰────────── {y}");
+            Cons.Consc("clear");
+        }
+        public static void GuildCreate(DiscordGuild Guild) {
+            DateTime now = DateTime.Now; var y = now.ToString("dd/MM/yyyy - HH:mm:ss");
+            Cons.Consc("yellow");
+            Console.WriteLine(" ");
+           Console.WriteLine($"    ╭ [ ⭕ - GUILD CREATE ] Added new guild: {Guild.Name} ({Guild.Id})!");
+           Console.WriteLine($"    ╰────────── {y}");
+            Cons.Consc("clear");
+        }
+        public static void GuildRemove(DiscordGuild Guild) {
+            DateTime now = DateTime.Now; var y = now.ToString("dd/MM/yyyy - HH:mm:ss");
+            Cons.Consc("yellow");
+            Console.WriteLine(" ");
+           Console.WriteLine($"    ╭ [ ❌ - GUILD REMOVE ] {Guild.Name} ({Guild.Id}) updated database!");
+           Console.WriteLine($"    ╰────────── {y}");
+            Cons.Consc("clear");
+        }
+        public static void GuildCreateError(string why, int herrshcerNumber, string GuildName, string GuildId) {
+            DateTime now = DateTime.Now; var y = now.ToString("dd/MM/yyyy - HH:mm:ss");
+            Cons.Consc("red");
+            Console.WriteLine(" ");
+           Console.WriteLine($"    ╭ [ ❗ - GUILD CREATE ] Failed to add guild in shard {herrshcerNumber}!");
+           Console.WriteLine($"    │");
+           Console.WriteLine($"    │    Guild: {GuildName}");
+           Console.WriteLine($"    │    ID: {GuildId}");
+           Console.WriteLine($"    ┴");
+           Console.WriteLine($"{why}");
+           Console.WriteLine($"    ┬");
+           Console.WriteLine($"    │");
+           Console.WriteLine($"    ╰────────── {y}");
+            Cons.Consc("clear");
+        }
+        public static void GuildRemoveError(string why, int herrshcerNumber, string GuildName, string GuildId) {
+            DateTime now = DateTime.Now; var y = now.ToString("dd/MM/yyyy - HH:mm:ss");
+            Cons.Consc("red");
+            Console.WriteLine(" ");
+           Console.WriteLine($"    ╭ [ ❗ - GUILD CREATE ] Failed to remove guild from shard {herrshcerNumber}!");
+           Console.WriteLine($"    │");
+           Console.WriteLine($"    │    Guild: {GuildName}");
+           Console.WriteLine($"    │    ID: {GuildId}");
+           Console.WriteLine($"    ┴");
+           Console.WriteLine($"{why}");
+           Console.WriteLine($"    ┬");
+           Console.WriteLine($"    │");
+           Console.WriteLine($"    ╰────────── {y}");
+            Cons.Consc("clear");
+        }
 
 
 
@@ -334,6 +389,33 @@ namespace Rezet.Logging {
             Cons.Consc("red");
             Console.WriteLine(" ");
            Console.WriteLine($"    ╭ [ 🔴 - HANDLER ] An error occurred in handler: {HandlerCategory}");
+           Console.WriteLine($"    ┴");
+           Console.WriteLine($"{why}");
+           Console.WriteLine($"    ┬");
+           Console.WriteLine($"    ╰────────── {y}");
+            Cons.Consc("clear");
+        }
+        public static void HandlerOperation(
+            string HandlerCategory,
+            string why
+        ) {
+            DateTime now = DateTime.Now; var y = now.ToString("dd/MM/yyyy - HH:mm:ss");
+            Cons.Consc("red");
+            Console.WriteLine(" ");
+           Console.WriteLine($"    ╭ [ ⚠️ - HANDLER OPERATION ] Error on handler operation, category: {HandlerCategory}");
+           Console.WriteLine($"    ┴");
+           Console.WriteLine($"{why}");
+           Console.WriteLine($"    ┬");
+           Console.WriteLine($"    ╰────────── {y}");
+            Cons.Consc("clear");
+        }
+        public static void UpdateStatusOperation(
+            string why
+        ) {
+            DateTime now = DateTime.Now; var y = now.ToString("dd/MM/yyyy - HH:mm:ss");
+            Cons.Consc("red");
+            Console.WriteLine(" ");
+           Console.WriteLine($"    ╭ [ ⚠️ - STATUS OPERATION ] Error on updating status!");
            Console.WriteLine($"    ┴");
            Console.WriteLine($"{why}");
            Console.WriteLine($"    ┬");
