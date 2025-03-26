@@ -1,6 +1,5 @@
 using System.Text.Json;
 using DSharpPlus;
-using DSharpPlus.Entities;
 using Rezet.HerrscherSearch;
 using Rezet.Logging;
 
@@ -44,24 +43,23 @@ namespace Rezet {
                         DiscordIntents.MessageContents,
                     ReconnectIndefinitely = true,
                     GatewayCompressionLevel = GatewayCompressionLevel.None,
-                    MinimumLogLevel = Microsoft.Extensions.Logging.LogLevel.Error,
+                    MinimumLogLevel = Microsoft.Extensions.Logging.LogLevel.None,
                 };
                 RezetRazor = new DiscordShardedClient(rzt);
 
 
 
                 // ========== HERRSCHER CONNECT;
-                HerrscherRazor = new HerrscherServices(config?.Keydb, "extension");
+                HerrscherRazor = new HerrscherServices(config?.Keydb, "extensions");
 
 
 
                 // ========== START!
-                var activity = new DiscordActivity("action!", ActivityType.Playing);
-                await RezetRazor.StartAsync();
-                await Handlers.CommandsHandlers.Activate(RezetRazor);
-                await Handlers.EventsHandler.Activate(RezetRazor);
-                await RezetRazor.UpdateStatusAsync(activity, UserStatus.DoNotDisturb);
                 await AOCore.ShardsSockets.Activate(RezetRazor);
+                await Handlers.EventsHandler.SyncEvents(RezetRazor);
+                await Handlers.CommandsHandlers.Activate(RezetRazor);
+                await Status.UṕdateStatus.Start(RezetRazor);
+                await RezetRazor.StartAsync();
                 RezetLogs.FinishedBuild(RezetRazor.CurrentUser.Username);
 
 
