@@ -9,16 +9,22 @@ using Rezet.Logging;
 namespace Rezet.Handlers {
     public class CommandsHandlers {
         public static async Task Activate(DiscordShardedClient Rezet) {
-            await SyncPrefix(Rezet);
             await SyncSlash(Rezet);
+            await SyncPrefix(Rezet);
         }
         private static async Task SyncPrefix(DiscordShardedClient ShardedRezet) {
-            var prefix = ShardedRezet.UseCommandsNextAsync(new CommandsNextConfiguration {
-                StringPrefixes = [ "r." ],
-                CaseSensitive = false,
-                EnableDms = false,
-                EnableMentionPrefix = true
-            });
+            var prefix = ShardedRezet.UseCommandsNextAsync(
+                new CommandsNextConfiguration {
+                    StringPrefixes = [ "r." ],
+                    CaseSensitive = false,
+                    EnableDms = false,
+                    EnableMentionPrefix = true
+                });
+
+
+            foreach (var p in await prefix) {
+                p.Value.RegisterCommands<PrefixSystemCommands>();
+            }
 
 
             
@@ -29,13 +35,13 @@ namespace Rezet.Handlers {
             var slash = await ShardedRezet.UseSlashCommandsAsync();
 
 
-
-            slash.RegisterCommands<PartnershipCommands>();
-            slash.RegisterCommands<CommunityCommands>();
-            slash.RegisterCommands<RolesCommands>();
-            slash.RegisterCommands<ChatCommands>();
-            slash.RegisterCommands<RezetSystems>();
-
+            foreach (var s in slash.Values) {
+                s.RegisterCommands<PartnershipCommands>();
+                s.RegisterCommands<CommunityCommands>();
+                s.RegisterCommands<RolesCommands>();
+                s.RegisterCommands<ChatCommands>();
+                s.RegisterCommands<RezetSystems>();
+            }
 
 
             RezetLogs.SlashCommandsConnect();
